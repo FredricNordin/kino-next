@@ -7,7 +7,15 @@ const userSchema = new Schema({
     password: String,
     token: String,
     isAdmin: Boolean,
-    registered: Date
+    registered: Date,
+    bookings: [
+        {
+            bookingid: Number,  // api/bookings/:id.id
+            seatrow: Number,    // api/bookings/:id/users.userid -> userid.seatrow
+            seatcolumn: Number, // api/bookings/:id/users.userid -> userid.seatcolumn
+            payment: Boolean    // api/bookings/:id/users.userid -> userid.payment
+        },
+    ]
 });
 
 const User = models.User || model("User", userSchema);
