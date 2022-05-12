@@ -38,7 +38,7 @@ export default function RightSidebar({ screenings, movies, movie }) {
           </p>
           <div className={styles["screening-container-bottom"]}>
             <p>{seatsAvail} lediga stolar</p>
-            <Link href={`/bookings/${screening.id}`}>
+            <Link href={`/api/bookings/${screening.id}`}>
               <button className={styles["book-button"]}>Boka nu</button>
             </Link>
           </div>
