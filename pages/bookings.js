@@ -12,13 +12,30 @@ import TicketDetails from "../components/TicketsDetails";
 import connectDb from "../DB/connectDb";
 import Movies from "../DB/models/movies";
 import Screenings from "../DB/models/screenings";
+import Bookings from "../DB/models/bookings";
+import Salons from "../DB/models/salons";
+
+import { handleBookingsCollection, handleSalonsCollection } from "./index";
 
 // Get all movies and screenings from DB
 export async function getServerSideProps() {
   await connectDb();
   const movies = await Movies.find({}, { _id: 0 }).lean();
   const screenings = await Screenings.find({}, { _id: 0 }).lean();
-  return { props: { movies, screenings } };
+  ////////////////////////////////////////////////////////////////////////////
+  //              reading the bookings and the salons collections           //
+  ////////////////////////////////////////////////////////////////////////////
+  var salons = await Salons.find({}, { _id: 0 }).lean();                    //
+  if (salons.length == 0) {                                                 //
+    salons = handleSalonsCollection();                                      //
+  };                                                                        //
+  var bookings = await Bookings.find({}, { _id: 0 }).lean();                //
+  if (bookings.length == 0) {                                               //
+    bookings = await handleBookingsCollection({ screenings, salons });      //
+  };                                                                        //
+  console.log('bookings inside getServerSideProps fn = ', bookings);        //
+  ////////////////////////////////////////////////////////////////////////////
+  return { props: { movies, screenings, bookings, salons } };
 }
 
 export default function BookingPage({ movies, screenings }) {
@@ -58,7 +75,7 @@ export default function BookingPage({ movies, screenings }) {
           <div className={styles["main-container-content-article-small"]}>
             <p>BILJETTBOKNING</p>
           </div>
-          <MovieDetails movie={movies} />
+          <MovieDetails movie={movies.id} />
           <TicketDetails />
           <SaloonDetails />
         </div>

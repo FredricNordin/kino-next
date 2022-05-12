@@ -13,7 +13,7 @@ import Screenings from "../DB/models/screenings";
 import Bookings from "../DB/models/bookings";
 import Salons from "../DB/models/salons";
 
-function handleBookingsCollection({ screenings, salons }) {
+export function handleBookingsCollection({ screenings, salons }) {
   console.log("we are inside handleBookingsCollection function");
   const bookings = screenings.map((screening) => {
     return (
@@ -33,7 +33,7 @@ function handleBookingsCollection({ screenings, salons }) {
   return (bookings);
 };
 
-function handleSalonsCollection() {
+export function handleSalonsCollection() {
   return (
     {
       id: 1,
@@ -57,7 +57,7 @@ export async function getServerSideProps() {
   ////////////////////////////////////////////////////////////////////////////
   var salons = await Salons.find({}, { _id: 0 }).lean();                    //
   if (salons.length == 0) {                                                 //
-    salons = await handleSalonsCollection();                                //
+    salons = handleSalonsCollection();                                      //
   };                                                                        //
   var bookings = await Bookings.find({}, { _id: 0 }).lean();                //
   if (bookings.length == 0) {                                               //
