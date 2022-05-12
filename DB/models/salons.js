@@ -6,9 +6,9 @@ const salonsSchema = new Schema({
   seatsmap: [
     [Boolean, Boolean, Boolean, Boolean],   // row1  // false for availabe seat
     [Boolean, Boolean, Boolean, Boolean],   // row2  // true for reserved seat
-    [Boolean, Boolean, Boolean, Boolean],    // row3
+    [Boolean, Boolean, Boolean, Boolean],   // row3
   ],
 });
 
-const Salons = models.Saloons || model("Salons", salonsSchema);
+const Salons = models.Salons || model("Salons", salonsSchema);
 export default Salons;

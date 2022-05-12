@@ -11,20 +11,20 @@ import connectDb from "../DB/connectDb";
 import Movies from "../DB/models/movies";
 import Screenings from "../DB/models/screenings";
 import Bookings from "../DB/models/bookings";
+import Salons from "../DB/models/salons";
 
-function handleBookingsCollection({ screenings }) {
+function handleBookingsCollection({ screenings, salons }) {
   console.log("we are inside handleBookingsCollection function");
-  console.log(screenings);
   const bookings = screenings.map((screening) => {
     return (
       {
         id: screening.id,
         screeningid: screening.id,
         movieid: screening.movieid,
-        salonid: 1,
+        salonid: salons.id,
         date: screening.date,
         time: screening.time,
-        seatsmap: [],
+        seatsmap: salons.seatsmap,
         users: [],
       }
     );
@@ -33,17 +33,39 @@ function handleBookingsCollection({ screenings }) {
   return (bookings);
 };
 
+function handleSalonsCollection() {
+  return (
+    {
+      id: 1,
+      name: "Main",
+      seatsmap: [
+        [false, false, false, false],
+        [false, false, false, false],
+        [false, false, false, false],
+      ],
+    }
+  );
+};
+
 // Get all movies and screenings from DB
 export async function getServerSideProps() {
   await connectDb();
   const movies = await Movies.find({}, { _id: 0 }).lean();
   const screenings = await Screenings.find({}, { _id: 0 }).lean();
-  var bookings = await Bookings.find({}, { _id: 0 }).lean();
-  if (bookings.length == 0) {
-    bookings = await handleBookingsCollection({ screenings });
-  };
-  console.log('bookings inside getServerSideProps fn = ', bookings);
-  return { props: { movies, screenings, bookings } };
+  ////////////////////////////////////////////////////////////////////////////
+  //              reading the bookings and the salons collections           //
+  ////////////////////////////////////////////////////////////////////////////
+  var salons = await Salons.find({}, { _id: 0 }).lean();                    //
+  if (salons.length == 0) {                                                 //
+    salons = await handleSalonsCollection();                                //
+  };                                                                        //
+  var bookings = await Bookings.find({}, { _id: 0 }).lean();                //
+  if (bookings.length == 0) {                                               //
+    bookings = await handleBookingsCollection({ screenings, salons });      //
+  };                                                                        //
+  console.log('bookings inside getServerSideProps fn = ', bookings);        //
+  ////////////////////////////////////////////////////////////////////////////
+  return { props: { movies, screenings, bookings, salons } };
 }
 
 export default function Home({ movies, screenings, bookings }) {

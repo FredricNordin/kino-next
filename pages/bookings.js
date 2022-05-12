@@ -58,7 +58,7 @@ export default function BookingPage({ movies, screenings }) {
           <div className={styles["main-container-content-article-small"]}>
             <p>BILJETTBOKNING</p>
           </div>
-          <MovieDetails movies={movies} />
+          <MovieDetails movie={movies} />
           <TicketDetails />
           <SaloonDetails />
         </div>

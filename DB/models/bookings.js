@@ -7,7 +7,7 @@ const bookingsSchema = new Schema({
   salonid: Number,
   date: String,
   time: String,
-  seatsmap: Boolean[[]],
+  seatsmap: [[Boolean]],
   users: [
     {
       userid: Number,
