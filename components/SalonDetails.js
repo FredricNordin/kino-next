@@ -1,6 +1,6 @@
 
 export default function SalonDetails() {
   return (
-    <p>the end ......</p>
+    <p style={{ color: "white" }}>the end ......</p>
   );
 }

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../../styles/Movie.module.css";
+import styles from "../../styles/Booking.module.css";
 
 import Navbar from "../../components/header/Navbar";
 import Logo from "../../components/header/Logo";
