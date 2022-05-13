@@ -1,0 +1,57 @@
+ul {
+    width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  ul li {
+      display: block;
+      float: left;
+      margin: 0 5px;
+  }
+  
+  label {
+  
+    box-shadow: -5px -5px 10px;
+      display: inline-block;
+      position: relative;
+      width: 128px;
+  
+      color: #fff;
+      background: grey;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.25s ease 0s;
+    -webkit-transition: all 0.25s
+      
+  }
+  
+  label:hover {
+      background: red;
+  }
+  label:active {
+      transition: 0; 
+    -webkit-transition: 0;
+      -webkit-filter: brightness(.8);
+  }
+  
+  input {
+      display: none;
+  }
+  
+  input:checked + label {
+      background: green;
+      color: #fff;
+    
+  }
+  
+  
+  
+  @keyframes boom {
+      25% { transform: scale(1.25); }
+  }
+  @-webkit-keyframes boom {
+      25% { -webkit-transform: scale(1.25); }
+  }
