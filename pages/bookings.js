@@ -33,7 +33,7 @@ export async function getServerSideProps() {
   // if (bookings.length == 0) {                                               //
   //   bookings = await handleBookingsCollection({ screenings, salons });      //
   // };                                                                        //
-  console.log('bookings inside getServerSideProps fn = ', bookings);        //
+  // console.log('bookings inside getServerSideProps fn = ', bookings);        //
   ////////////////////////////////////////////////////////////////////////////
   return { props: { movies, screenings, bookings, salons } };
 }
