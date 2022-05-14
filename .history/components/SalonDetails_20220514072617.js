@@ -1,4 +1,4 @@
-import styles from "../styles/SalonDetails.module.css";
+mport styles from "../styles/SalonDetails.module.css";
 
 export default function SalonDetails() {
 return (
