@@ -27,9 +27,9 @@ export default function MovieDetails({ movie, screening }) {
         </p>
       </p>
       <div className={styles["screening"]}>
-        <p>
-          {screening.date} kl. {screening.time}
-        </p>
+        <p>Screening datum </p>
+        <p>{screening.date}</p>
+        <p>kl. {screening.time}</p>
       </div>
     </div>
 

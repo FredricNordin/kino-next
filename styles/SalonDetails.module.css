@@ -1,0 +1,32 @@
+.row-seats {
+  color: white;
+  list-style-type: none;
+  display: flex;
+}
+
+.salon-rows {
+  color: white;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.row-line {
+  display: inherit;
+}
+
+.free-seat {
+  background-color: grey;
+}
+
+.booked-seat {
+  background-color: red;
+}
+
+.my-seat {
+  background-color: lightgreen;
+}
+
+/* .seat-button{
+color: red;
+} */

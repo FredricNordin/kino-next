@@ -98,9 +98,6 @@ export default function Home({ movies, screenings, bookings }) {
         <div className={styles["right-container"]}>
           <RightSidebar screenings={screenings} movies={movies} />
         </div>
-        {/* <div>
-          <TestBookings bookings={bookings} />
-        </div> */}
       </main>
 
       <footer className="footer">
