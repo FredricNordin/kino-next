@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 
 export default function TicketsDetails({ booking, salon }) {
 
-  const [seatCondition, setSeatCondition] = useState(booking.seatsmap);
+  // const [seatCondition, setSeatCondition] = useState(booking.seatsmap);
+  const seatCondition = booking.seatsmap || [];
   console.log("seatCondition = ", seatCondition);
 
   // Seat Value
@@ -23,7 +24,7 @@ export default function TicketsDetails({ booking, salon }) {
 
   // Seat List
   function handleSeats(rrow, indexrow) {
-    const seatsList = booking.seatsmap[indexrow].map((seat, indexseat) => {
+    const seatsList = rrow.map((seat, indexseat) => {
       console.log("seat(", indexrow, ",", indexseat, ") before click = ", seat);
       return (
         <ul key={indexrow} className={styles["row-seats"]}>
@@ -37,9 +38,10 @@ export default function TicketsDetails({ booking, salon }) {
               // onChange={(ev) => seat = ev.target.checked}
               onClick={() => {
                 seat = !seat;
-                //   setSeatCondition(!seatCondition);
-                //   console.log("setSeatCondition = ", seatCondition);
                 console.log("seat(", indexrow, ",", indexseat, ") after click = ", seat);
+                seatCondition[indexrow][indexseat] = seat;
+                console.log("setSeatCondition = ", seatCondition);
+
               }}
               className={seat ? styles["booked-seat"] : styles["free-seat"]}>
               {seat ? "[x]" : "[_]"}
@@ -62,5 +64,5 @@ export default function TicketsDetails({ booking, salon }) {
       </li>
     );
   });
-  return (<ul className={styles["salon-rows"]}>{rowsList}</ul>);
+  return (<ul key={100} className={styles["salon-rows"]}>{rowsList}</ul>);
 }
