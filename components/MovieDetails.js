@@ -12,7 +12,7 @@ export default function MovieDetails({ movie, screening }) {
           layout="fill"
         />
       </div>
-      <p className={styles["about"]}>{movie.details.about}
+      <div className={styles["about"]}>{movie.details.about}
         <p className={styles["involved"]}>
           Director: {movie.details.director}
         </p>
@@ -25,7 +25,7 @@ export default function MovieDetails({ movie, screening }) {
         <p className={styles["involved"]}>
           IMDB rating: {movie.details.rating}
         </p>
-      </p>
+      </div>
       <div className={styles["screening"]}>
         <p>Screening datum </p>
         <p>{screening.date}</p>

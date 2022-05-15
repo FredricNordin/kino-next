@@ -22,24 +22,29 @@ export default function TicketsDetails({ booking, salon }) {
   // });
 
   // Seat List
-  function handleSeats(rrow) {
-    var j = 0;
-    const seatsList = rrow.map((seat) => {
-      // console.log("seat before click = ", seat);
-      j++;
+  function handleSeats(rrow, indexrow) {
+    const seatsList = booking.seatsmap[indexrow].map((seat, indexseat) => {
+      console.log("seat(", indexrow, ",", indexseat, ") before click = ", seat);
       return (
-        <ul className={styles["row-seats"]}>
-          <li key={j} className={styles["single-seat"]}>
+        <ul key={indexrow} className={styles["row-seats"]}>
+          <li key={indexseat} className={styles["single-seat"]}>
+
             <button
+              key={indexseat}
+              // type="checkbox"
+              // name="seatCase"
+              // checked={seat}
+              // onChange={(ev) => seat = ev.target.checked}
               onClick={() => {
                 seat = !seat;
-                setSeatCondition(!seatCondition);
-                console.log("setSeatCondition = ", seatCondition);
-                // console.log("seat (", i, ",", j, ") after click = ", seat);
+                //   setSeatCondition(!seatCondition);
+                //   console.log("setSeatCondition = ", seatCondition);
+                console.log("seat(", indexrow, ",", indexseat, ") after click = ", seat);
               }}
               className={seat ? styles["booked-seat"] : styles["free-seat"]}>
               {seat ? "[x]" : "[_]"}
             </button>
+
           </li>
         </ul>
       );
@@ -48,14 +53,12 @@ export default function TicketsDetails({ booking, salon }) {
   };
 
   // Row List
-  var i = 0;
-  const rowsList = booking.seatsmap.map((row) => {
-    // console.log("row", i, "= ", row);
-    i++;
+  const rowsList = booking.seatsmap.map((row, indexrow) => {
+    console.log("row", indexrow, " = ", row);
     const rrow = row;
     return (
-      <li key={i} className={styles["row-line"]}>
-        {handleSeats(rrow)}
+      <li key={indexrow} className={styles["row-line"]}>
+        {handleSeats(rrow, indexrow)}
       </li>
     );
   });
