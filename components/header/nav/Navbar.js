@@ -1,5 +1,5 @@
 import MenyLink from "./MenyLink";
-import LoginMeny from "./loginMeny";
+import LoginMeny from "./LoginMeny";
 export default function Navbar() {
   return (
     <>
