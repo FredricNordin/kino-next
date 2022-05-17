@@ -1,7 +1,7 @@
 import styles from "../styles/SignUp.module.css";
 import React, { useState, useEffect } from "react";
 
-export default function Signup() {
+export default function SignUp() {
   const initialValues = { name: "", phone: "", email: "", password: "", verifyPassword: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
