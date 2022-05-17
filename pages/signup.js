@@ -1,8 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-
 import RightSidebar from "../components/RightSidebar";
-import SignUp from "../components/Signup";
+import SignUp from "../components/SignUp";
 
 export default function Home() {
   return (
