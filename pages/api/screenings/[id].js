@@ -18,6 +18,7 @@ export default async function handler(req, res) {
         // If error (Database unavailable), return 500.
         res.status(500).json({ message: "Error getting screenings!" });
     }
-} */
+} 
 
 // THIS API ROUTE IS NOW OBSOLETE. WE CAN REMOVE THIS ROUTE IN THE FUTURE !!!!!!!!!!!!!!!!!!
+*/
